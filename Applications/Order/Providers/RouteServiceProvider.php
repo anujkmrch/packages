@@ -18,7 +18,7 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
        Route::group([
-            'middleware' => ['web','guest.user']
+            'middleware' => ['web']
         ], function ($router) {
             require (dirname(__DIR__).'/Routes/auth.routes.php');
             require (dirname(__DIR__).'/Routes/client.routes.php');

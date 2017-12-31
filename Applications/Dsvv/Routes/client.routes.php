@@ -1,5 +1,5 @@
 <?php
-Route::group(['namespace'=>"\Dsvv\Apps\Client\Controllers",'middleware'=>['tracker','widget.builder','dsvv.client']],function(){
+Route::group(['namespace'=>"\Dsvv\Apps\Client\Controllers"],function(){
 		Route::get('/', [
 			'uses' => 'HomeController@index',
 			'as'	=> 'client.index',

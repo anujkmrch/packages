@@ -1,4 +1,4 @@
-@extends('DevView::Admin.admin')
+@extends('DsvvView::admin.admin')
 @section('content')
 <div class="container">
 	<div class="row">

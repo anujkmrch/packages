@@ -23,6 +23,7 @@ class Dsvvify
             if(System::can('can_access_admin')):
                 $this->build_admin_menu();
                 $this->build_admin_quick_action_buttons();
+                $this->build_admin_dashboard();
                 if($path = $request->input('redirect_to'))
                     return redirect($path);
             endif;
@@ -50,5 +51,16 @@ class Dsvvify
         foreach(Frontpage::$cells as $cell):
             Admin::add_quick_action_button($cell);
         endforeach;
+    }
+
+    function build_admin_dashboard()
+    {
+        $dashboard = [
+            "title"=> "Application Status",
+            "slug"=>"application status",
+            "callback"=> 'applications_status',
+            'ordering' => -22,
+        ];
+        Admin::add_admin_dashboard($dashboard);
     }
 }

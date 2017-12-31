@@ -1,5 +1,5 @@
 <?php
-Route::group(['middleware'=>['admin.user'],'prefix'=>'admin','namespace'=>"Dsvv\Apps\Admin\Controllers"],function(){
+Route::group(['prefix'=>'admin','namespace'=>"Dsvv\Apps\Admin\Controllers"],function(){
 
 	/**
 	 * Application Controller Routes
