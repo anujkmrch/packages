@@ -28,8 +28,6 @@ class CourseController extends Controller
 
         \Admin::add_to_toolbar(['name'=>'Create course','href'=>route('dsvv.admin.course.create')]);
 
-        
-    
     	if($course = Course::with('session')->where('code',$code)->first())
     	{
             // dd($course->buildCourseFormElement());

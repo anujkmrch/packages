@@ -1,5 +1,5 @@
 <?php
-namespace System\Classes;
+namespace Dsvv\Classes;
 
 /**
  * Form Class
@@ -61,8 +61,6 @@ namespace System\Classes;
     foreach ($this->elements as $name => $elements) {
       $value=array_key_exists('value',$elements)?$elements['value']:null;
       $label = '<label class="fc-lbl">' . $elements['title'] . '</label>';
-      $array = [];
-
       $information = '';
       if(
 	      	array_key_exists('callback',$elements) 
@@ -74,10 +72,9 @@ namespace System\Classes;
 	      	is_callable(array(&$this,$elements['type']))
 	      ):
 
-      	$array = call_user_func($elements['callback'],$elements);
-      	$method = $elements['type'];
-        $input ='';
-      	$information = $this->$method($array,$name,$elements,$request);
+      		$array = call_user_func($elements['callback'],$elements);
+      		$method = $elements['type'];
+      		$information .= $this->$method($array,$name,$elements,$request);
       endif;
 
       switch ($elements['type']) {
@@ -88,7 +85,6 @@ namespace System\Classes;
         case 'password':
         case 'text':
         case 'number':
-        case 'date':
           $input = "<input class=\"fc-in form-control\" name=\"{$name}\" type=\"{$elements['type']}\" value=\"{$value}\" />";
           break;
 
@@ -113,38 +109,23 @@ namespace System\Classes;
           break;
 
         case 'checkbox':
-          if(count($array)):
-            $input.='<div class="form-group fc-checkbox"><div class="checkbox">
-              ';
-              foreach($array as $key => $call ):
-                $input .= "<label><input type=\"checkbox\" name=\"{$name}[]\" id=\"input\" value=\"{$key}\"";
-                if(is_array($elements['value']) and in_array($key,$elements['value'])){
-                  $input .= ' checked';
-                }
-                $input .="> {$call}<label>";
-              endforeach;
-                $input .= '</div></div>';
-            endif;
+
         break;
         
         case 'radio':
-        if(count($array)):
-          $input.='<div class="form-group fc-radio"><div class="radio">
-              ';
+        $input.='<div class="form-group fc-radio"><div class="radio">
+            ';
             foreach($array as $key => $call ):
               $input .= "<label><input type=\"radio\" name=\"{$name}\" id=\"input\" value=\"{$key}\"> {$call}<label>";
             endforeach;
               $input .= '</div></div>';
-          endif;
         break;
 
         default:
           $input = '<input type="' . $elements['type'] . '" name="' . $name . '" />';
           break;
       }
-      if(strlen($input))
-        $output .= $label . '<p>' . $input . '</p>';
-
+      $output .= $label . '<p>' . $input . '</p>';
     }
     // Return the form.
     return $output;
@@ -190,11 +171,8 @@ namespace System\Classes;
   	return $html;
   }
 
-  function checkbox(){
-    return ;
-  }
-
-  function radio(){
-
+  public function radio()
+  {
+    return "htrer";
   }
  }

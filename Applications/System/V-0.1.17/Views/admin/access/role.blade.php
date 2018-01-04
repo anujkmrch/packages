@@ -3,7 +3,8 @@
 <div class="admin access">
 	<div class="container wrapper">
 		<div class="small col-lg-4">
-			
+		<form action="{{route('admin.access.role',['role'=>$role->slug])}}" method="POST" role="form" class="form">
+				{{csrf_field()}}
 
 			<div class="full">
 						<h1>Role: {{$role->title}}</h1>
@@ -36,8 +37,7 @@
 		</div>
 		<div class="big col-lg-8">
 			@include('SystemView::admin.flash')
-			<form action="{{route('admin.access.role',['role'=>$role->slug])}}" method="POST" role="form" class="form">
-				{{csrf_field()}}
+			
 				<div class="row">
 					
 					<div class="full">

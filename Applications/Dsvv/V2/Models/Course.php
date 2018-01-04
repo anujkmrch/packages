@@ -47,6 +47,24 @@ class Course extends Model
     	return $this->hasMany(CourseApplication::class);
     }
 
+    public function setConfigurationAttribute($value)
+    {
+        if(is_array($value))
+        {
+            $this->attributes['configuration'] = json_encode($value);
+        } else {
+            $this->attributes['configuration'] = null;
+        }
+    }
+
+    public function getConfigurationAttribute($value)
+    {
+        if(is_string($value))
+        {
+            return json_decode($value,true);
+        }
+    }
+
     /**
      * Save the course item from request object, whether it is new or old
      * @param  [type] $data [description]
@@ -90,7 +108,8 @@ class Course extends Model
                 break;
 
                 case 'configuration':
-                    $columns['configuration'][$key] = $this->$key;
+                    // $columns['configuration'][$key] = $this->$key;
+                    $data[$key]['value'] = $this->$key;
                 break;
 
                 case 'relation':
