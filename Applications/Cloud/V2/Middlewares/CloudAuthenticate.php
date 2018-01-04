@@ -16,10 +16,18 @@ class CloudAuthenticate
      */
     public function handle($request, Closure $next)
     {   
-        
-        if(!System::can('can_access_cloud')):
-            dd("You cannot access cloud");
-        endif;
+        // if(!System::can('can_access_cloud')):
+        // 	if (!Auth::guest() and !System::isGuestCreated()) {
+        //         dd("You cannot access");
+        // 	}
+        // 	else {
+        // 		$request->session()->flash('alert-danger', 'You need to login');
+        // 		if($path = trim($request->path(),'/'))
+        // 			return redirect(route('auth.login',['redirect_to' => $path]));
+        // 		return redirect()->route('auth.login');
+        // 	}
+        // endif;
+
         return $next($request);;
     }
 }

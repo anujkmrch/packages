@@ -17,6 +17,12 @@ class Cloud
 			return User::find($id);
 		return null;
 	}
+	function UserWithFiles()
+	{
+		if($id = \Auth::id())
+			return User::with('files')->find($id);
+		return null;
+	}
 
 	/**
 	 * 

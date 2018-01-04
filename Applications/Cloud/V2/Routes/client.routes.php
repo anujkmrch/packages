@@ -1,5 +1,6 @@
 <?php
-Route::group(['namespace'=>"\Cloud\Apps\Client\Controllers",'middleware'=>['cloud.verify']],function(){
+Route::group(['namespace'=>"\Cloud\Apps\Client\Controllers"],function(){
+	Route::group(['middleware'=>['cloud.verify']],function(){
 		Route::get('/', [
 			'uses' => 'CloudController@index',
 			'as'	=> 'client.index',
@@ -9,6 +10,11 @@ Route::group(['namespace'=>"\Cloud\Apps\Client\Controllers",'middleware'=>['clou
 			'uses' => 'CloudController@index',
 			'as'	=> 'client.index',
 		]);
+	});
 
+	Route::get('/user', [
+		'uses' => 'CloudController@index',
+		'as'	=> 'client.access.request',
+	]);
 });
 ?>

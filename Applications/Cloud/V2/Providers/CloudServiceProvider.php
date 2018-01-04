@@ -41,6 +41,8 @@ class CloudServiceProvider extends ServiceProvider
         \Event::subscribe(\Cloud\Subscribers\Client\Client::class);
 
         \App::register(RouteServiceProvider::class);
+        
+
     }
 
     public function register()
@@ -50,6 +52,8 @@ class CloudServiceProvider extends ServiceProvider
         {
             return new Cloud;
         });
+
+        
     }
 
     protected function loadHelpers()
