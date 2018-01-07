@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">{!! SEO::generate(true) !!}
+        <link rel="stylesheet" href="/system/client.min.css">
+        <link href="/fa/css/font-awesome.min.css" rel="stylesheet">
+        <script src="/js/jquery-3.2.1.min.js"></script>
+    </head>
+    <body>
+        <div id="top" class="header cf">
+        	<div class="wrapper">
+        		<h1 class="logo"><a href="/">MyCompanyName</a></h1>
+        		@if(position_has_widget('user'))
+                    {!! widget_render("user") !!}
+			    @endif
+        	</div>
+        </div>
+        <div class="wrapper container">
+        <div class="flash-message">
+            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+              @if(Session::has('alert-' . $msg))
+              <p class="alert alert-{{ $msg }}"><i class="fa fa-coffee"></i> {{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+              @endif
+            @endforeach
+        </div>
+    </div>
+        @yield("content")
+    </body>
+</html>
