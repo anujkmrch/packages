@@ -25,10 +25,7 @@ class RouteServiceProvider extends ServiceProvider
             require (dirname(__DIR__).'/Routes/admin.routes.php');
         });
 
-        Route::group([
-            'middleware' => ['api','jwt.auth','jwt.refresh'],
-            'prefix' => 'api',
-        ], function ($router) {
+        Route::group(['middleware' => ['api'],'prefix'=>'api' ], function ($router) {
             require (dirname(__DIR__).'/Routes/api.routes.php');
         });
     }
